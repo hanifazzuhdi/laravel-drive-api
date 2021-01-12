@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Illuminate\Support\Facades\Storage;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,7 +18,12 @@ Route::get('/', function () {
 });
 
 Route::post('upload', function () {
-    request()->file('file')->store("1_FHk4anvPIE8kYx0eGtVM2C4JaDFgu2F", "google");
+
+    // Cloudinary
+    $response = cloudinary()->upload(request('file')->getRealPath())->getSecurePath();
+
+    // Google Drive Api
+    // request()->file('file')->store("1_FHk4anvPIE8kYx0eGtVM2C4JaDFgu2F", "google");
 
     return back()
         ->with('success', 'File Berhasil diupload');

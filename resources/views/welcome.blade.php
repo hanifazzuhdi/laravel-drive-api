@@ -74,7 +74,7 @@
                 Laravel Drive Api
             </div>
 
-            @if (session('success')))
+            @if (session('success'))
             <p style="color: blue;">
                 {{session('success')}}
             </p>
